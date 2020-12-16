@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <title>Cooking With Sass</title>
+</head>
+
+<body>
+      <nav>
+            <div class="nav-wrapper green accent-3 valign-wraper">
+                  <h6 class="brand-logo center-align">Cooking With Sass</h6>
+                  <br></br>
+                  <br></br>
+            </div>
+      </nav>
+      <nav class="searchBar">
+            <div class="nav-wrapper green accent-3">
+                  <a href="#" class="brand-logo">Search</a>
+                  <form>
+                        <div class="input-field">
+                              <input id="search" type="search" required>
+                              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                              <i class="material-icons">close</i>
+                        </div>
+                  </form>
+            </div>
+      </nav>
+      <div class="card medium">
+            <div class="video-container">
+                  <iframe width="853" height="480" src="https://www.youtube.com/embed/aDWgr7YEdTA" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4" id="recipeTitle">Card Title<i
+                              class="material-icons right">more_vert</i></span>
+                  <div class="center-align">
+                        <button href="#" class="waves-effect waves-light btn-small">Save</button>
+                        <button href="#" class="waves-effect waves-light btn-small">Clear</button>
+                        <button href="#" class="waves-effect waves-light btn-small"
+                              href="recipeBook.html">Recipes</button>
+                  </div>
+
+            </div>
+            <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4" id="recipeTitle">Card Title<i
+                              class="material-icons right">close</i></span>
+                  <p id="ingredients">Here is some more information about this product that is only revealed once
+                        clicked on.</p>
+            </div>
+      </div>
+      <ul class="pagination center-align">
+            <div class="left">
+                  <li class="waves-effect left"><a href="index.html"><i class="material-icons">chevron_left</i></a></li>
+                  <li class="active right"><a href="index.html">Home</a></li>
+            </div>
+            <div class="right">
+                  <li class="active left"><a href="recipeBook.html">Recipes</a></li>
+                  <li class="waves-effect right"><a href="recipeBook.html"><i
+                                    class="material-icons">chevron_right</i></a>
+                  </li>
+            </div>
+      </ul>
+
+
+
+
+
+
+
+
+
+
+
+      
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script src="https://kit.fontawesome.com/f7d5d07b27.js" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+      <script src="script.js"></script>
+</body>
+
+</html>
