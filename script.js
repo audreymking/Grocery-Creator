@@ -2,7 +2,7 @@ $("document").ready(function () {
       const searchTerm = $("#search").val()
       const video = $("#youtTubeVideo")
       const recipeTitle = $("#recipeTitle")
-      const ingredients = $("#ingredients")
+      const ingredientsList = $("#ingredientsList")
       const saveButton = $("#saveButton")
       const clearButton = $("#clearButton")
       const recipesButton = $("#recipesButton")
