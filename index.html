@@ -16,14 +16,12 @@
 <body>
       <nav>
             <div class="nav-wrapper green accent-3 valign-wraper">
-                  <h6 class="brand-logo center-align">Cooking With Sass</h6>
-                  <br></br>
-                  <br></br>
+                  <h6 class="brand-logo center">Cooking With Sass</h6>
             </div>
       </nav>
       <nav class="searchBar">
-            <div class="nav-wrapper green accent-3">
-                  <a href="#" class="brand-logo">Search</a>
+            <div class="nav-wrapper red lighten-2">
+                  <a href="#" class="brand-logo center">Search</a>
                   <form>
                         <div class="input-field">
                               <input id="search" type="search" required>
@@ -33,20 +31,25 @@
                   </form>
             </div>
       </nav>
-      <div class="card medium">
-            <div class="video-container">
-                  <iframe width="853" height="480" src="https://www.youtube.com/embed/aDWgr7YEdTA" frameborder="0"
+      <div class="row">
+            <div class="video-container" style="margin-top: 1.5rem;">
+                  <iframe id="youtTubeVideo" width="853" height="480" src="https://www.youtube.com/embed/aDWgr7YEdTA"
+                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
+      </div>
+      <div class="card">
             <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4" id="recipeTitle">Card Title<i
                               class="material-icons right">more_vert</i></span>
-                  <div class="center-align">
-                        <button href="#" class="waves-effect waves-light btn-small">Save</button>
-                        <button href="#" class="waves-effect waves-light btn-small">Clear</button>
-                        <button href="#" class="waves-effect waves-light btn-small"
-                              href="recipeBook.html">Recipes</button>
+                  <div class="center-align" style="margin-top:6rem;">
+                        <button href="#" class="waves-effect waves-light btn-small cyan lighten-2"
+                              id="saveButton">Save</button>
+                        <button href="#" class="waves-effect waves-light btn-small red lighten-2"
+                              id="clearButton">Clear</button>
+                        <button class="waves-effect waves-light btn-small green accent-3" href="recipeBook.html"
+                              id="recipesButton"><a href="recipeBook.html" style="color:white;">Recipes</a></button>
                   </div>
 
             </div>
@@ -55,20 +58,32 @@
                               class="material-icons right">close</i></span>
                   <p id="ingredients">Here is some more information about this product that is only revealed once
                         clicked on.</p>
+                  <div class="center-align" style="margin-top:6rem;">
+                        <button href="#" class="waves-effect waves-light btn-small cyan lighten-2"
+                              id="saveButton">Save</button>
+                        <button href="#" class="waves-effect waves-light btn-small red lighten-2"
+                              id="clearButton">Clear</button>
+                        <button class="waves-effect waves-light btn-small green accent-3" href="recipeBook.html"
+                              id="recipesButton"><a href="recipeBook.html " style="color:white;">Recipes</a></button>
+                  </div>
             </div>
       </div>
-      <ul class="pagination center-align">
-            <div class="left">
-                  <li class="waves-effect left"><a href="index.html"><i class="material-icons">chevron_left</i></a></li>
-                  <li class="active right"><a href="index.html">Home</a></li>
-            </div>
-            <div class="right">
-                  <li class="active left"><a href="recipeBook.html">Recipes</a></li>
-                  <li class="waves-effect right"><a href="recipeBook.html"><i
-                                    class="material-icons">chevron_right</i></a>
-                  </li>
-            </div>
-      </ul>
+      <div class="row">
+            <ul class="pagination center" style="width: 80%; justify-content: center;margin: auto;"
+                  id="bottomNavigation">
+                  <div class="left">
+                        <li class="waves-effect left"><a href="index.html"><i
+                                          class="material-icons">chevron_left</i></a></li>
+                        <li class="active right"><a href="index.html">Home</a></li>
+                  </div>
+                  <div class="right">
+                        <li class="active left"><a href="recipeBook.html">Recipes</a></li>
+                        <li class="waves-effect right"><a href="recipeBook.html"><i
+                                          class="material-icons">chevron_right</i></a>
+                        </li>
+                  </div>
+            </ul>
+      </div>
 
 
 
@@ -80,7 +95,7 @@
 
 
 
-      
+
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="https://kit.fontawesome.com/f7d5d07b27.js" crossorigin="anonymous"></script>
