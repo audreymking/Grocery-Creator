@@ -5,3 +5,9 @@
     height: 80px;
     line-height: 56px;
 }
+
+t#ingredientsListContainer {
+  height: auto;
+  position: relative;
+  z-index: 9999999;
+}
