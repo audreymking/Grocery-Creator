@@ -6,8 +6,13 @@
     line-height: 56px;
 }
 
-t#ingredientsListContainer {
+#ingredientsListContainer {
   height: auto;
   position: relative;
   z-index: 9999999;
+}
+
+.modal {
+  padding: 2rem;
+  height: auto;
 }

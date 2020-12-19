@@ -1,4 +1,6 @@
 $(document).ready(function () {
+      $('#modal1').modal();
+      //$("#modalClose").close()
 
       const video = $("#youtTubeVideo")
       let recipeTitle = $("#recipeTitle")
@@ -23,31 +25,35 @@ $(document).ready(function () {
                         method: "GET"
                   }).then(function (response) {
                         console.log(response)
-                        recipeTitle.text(response.hits[0].recipe.label)
-                        recipeTitlePopup.text(response.hits[0].recipe.label)
-                        for (i = 0; i < response.hits[0].recipe.ingredients.length; i++) {
-                              newIngredient = $("<li>")
-                              newIngredient.text(response.hits[0].recipe.ingredients[i].text)
-                              ingredientsList.append(newIngredient)
+                        if (response.count == 0) {
+                              alert("No recipes match the search terms entered.  Edit your search.")
+                        } else {
+                              recipeTitle.text(response.hits[0].recipe.label)
+                              recipeTitlePopup.text(response.hits[0].recipe.label)
+                              $("#recipeLink").attr("href", response.hits[0].recipe.url)
+                              $("#recipeLink").text("Checkout Recipe Here")
+                              $("recipeLink").attr("class", "waves-effect waves-light btn-small red lighten-2")
+                              for (i = 0; i < response.hits[0].recipe.ingredients.length; i++) {
+                                    newIngredient = $("<li>")
+                                    newIngredient.text(response.hits[0].recipe.ingredients[i].text)
+                                    ingredientsList.append(newIngredient)
+                              }
+                              let recipeName = recipeTitlePopup.text()
+                              let youtubeURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + recipeName + "&key=AIzaSyCpinsFzK8YgE-y0pDgj1f7ZuGlsVdjrkI"
+                              $.ajax({
+                                    url: youtubeURL,
+                                    method: "GET"
+                              }).then(function (youtube) {
+                                    console.log(youtube)
+                                    let youtubeVidID = youtube.items[0].id.videoId
+                                    youtubeVideo.attr("src", "https://www.youtube.com/embed/" + youtubeVidID)
+                              })
                         }
-                  })
-                  let youtubeURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + searchTerm + "&key=AIzaSyCpinsFzK8YgE-y0pDgj1f7ZuGlsVdjrkI"
-                  $.ajax({
-                        url: youtubeURL,
-                        method: "GET"
-                  }).then(function (youtube) {
-                        console.log(youtube)
-                        let youtubeVidID = youtube.items[0].id.videoId
-                        youtubeVideo.attr("src", "https://www.youtube.com/embed/" + youtubeVidID)
                   })
             }
       })
 
-      saveButton.on("click", function () {
-            var elem = document.getElementById("#modal1")
-            var instance = M.Modal.getInstance(elem);
-            instance.open()
-      })
+
 })
 
 
