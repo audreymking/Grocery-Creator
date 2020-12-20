@@ -42,10 +42,7 @@
             <div class="card-content">
                   <h6 id="recipeTitle"></h6>
                   <div class="center-align" style="margin-top:6rem;">
-                        <button href="#" class="waves-effect waves-light btn-small cyan lighten-2"
-                              id="saveButton1">Save</button>
-                        <button href="#" class="waves-effect waves-light btn-small red lighten-2"
-                              id="clearButton">Clear</button>
+                        <button class="waves-effect waves-light btn-small cyan lighten-2" id="saveButton1">Save</button>
                         <button class="waves-effect waves-light btn-small view"
                               onclick="$('#modal1').modal('open');">View
                               Ingredients</button>
@@ -55,18 +52,17 @@
             <div class="card-reveal" id="ingredientsListContainer">
 
             </div>
-
+      </div>
+      <div>
+            <h5 id="savedRecipeHeader">Saved Recipes:</h5>
       </div>
       <div id="recipeCards">
       </div>
 
       <div class="row center-align">
-            <button href="#" class="waves-effect waves-light btn-small grey darken-4" id="clearButton">Clear All
+            <button class="waves-effect waves-light btn-small grey darken-4" id="clearAllButton">Clear All
                   Recipes</button>
       </div>
-
-
-
       <!-- Modal Structure -->
       <div id="modal1" class="modal">
             <h4 class="card-title grey-text text-darken-4" id="recipeTitlePopup"><i class="material-icons right"
@@ -79,27 +75,14 @@
                   </ul>
             </div>
             <div class="modal-footer center-align">
-                  <button href="#!" class="waves-effect waves-light btn-small cyan lighten-2"
-                        id="saveButton2">Save</button>
-                  <button href="#!" class="waves-effect waves-light btn-small red lighten-2"
-                        id="clearButton">Clear</button>
+                  <button class="waves-effect waves-light btn-small cyan lighten-2" id="saveButton2">Save</button>
             </div>
       </div>
-
-
-
-
-
-
-
-
-
       <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       <script src="https://kit.fontawesome.com/f7d5d07b27.js" crossorigin="anonymous"></script>
-
       <script src="script.js"></script>
 </body>
 
