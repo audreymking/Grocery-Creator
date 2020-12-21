@@ -3,16 +3,16 @@ $(document).ready(function () {
       var savedRecipes = JSON.parse(localStorage.getItem("recipes")) || []
       $('#modal1').modal();
 
-
       function searchRecipes(searchTerm) {
             let recipeTitle = $("#recipeTitle")
             let recipeTitlePopup = $("#recipeTitlePopup")
             let youtubeVideo = $("#youtubeVideo")
-            var api_key = "1583ebbcc0b71b443409e71ce9aeb0c0"
-            var app_id = "c830e7a5"
+            var api_key = "1df2ae13cdae45953fcb01d364673c56"
+            var app_id = "2cd7b86b"
             let ingredientsList = $("#ingredientsList")
-            if (recipeTitle == null || recipeTitle == "" || recipeTitle == "Null" || recipeTitle == "null") {
+            if (recipeTitle == null || recipeTitle == "" || recipeTitle == "Null" || recipeTitle == "null" || recipeTitle == 0) {
                   alert("No recipes match the search terms entered.  Edit your search.")
+                  return
             } else {
                   var searchURL = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=" + searchTerm + "&app_id=" + app_id + "&app_key=" + api_key
                   $.ajax({
@@ -21,6 +21,7 @@ $(document).ready(function () {
                   }).then(function (response) {
                         if (response.count == 0) {
                               alert("No recipes match the search terms entered.  Edit your search.")
+                              return
                         } else {
                               recipeTitle.text(response.hits[0].recipe.label)
                               recipeTitlePopup.text(response.hits[0].recipe.label)
@@ -34,7 +35,7 @@ $(document).ready(function () {
                                     ingredientsList.append(newIngredient)
                               }
                               let recipeName = recipeTitlePopup.text()
-                              let youtubeURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + recipeName + "&key=AIzaSyCpinsFzK8YgE-y0pDgj1f7ZuGlsVdjrkI"
+                              let youtubeURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + recipeName + "&key=AIzaSyA_seyeGpnHzEPUZtpmwD1ZIuDGSGPeIDc"
                               $.ajax({
                                     url: youtubeURL,
                                     method: "GET"
@@ -48,17 +49,17 @@ $(document).ready(function () {
             }
       }
 
-      $("input").on("keydown", function (event) {
+      $("#search").on("keydown", function (event) {
 
             let searchTerm = $("#search").val()
             if (event.keyCode == 13) {
                   $("li").remove()
                   event.preventDefault()
                   searchRecipes(searchTerm)
-
+                  $(".enableOnInput").prop('disabled', false)
+                  $("#viewIngredientsBtn").prop('disabled', false)
             }
       })
-
 
       function renderSearchHistory() {
             const recipeEl = $("#recipeCards").html("")
@@ -83,7 +84,7 @@ $(document).ready(function () {
                   recipeTitle.attr("data-attribute", uniqueRecipes[i])
                   recipeTitle.text(uniqueRecipes[i])
                   const cardContent = $("<div>")
-                  cardContent.attr("class", "card-content")
+                  cardContent.attr("class", "card-content savedRecipe")
                   const delBtn = $("<a>")
                   delBtn.attr("class", "btn-floating halfway-fab waves-effect waves-light red removeButton")
                   const trashIcn = $("<i>")
@@ -99,23 +100,24 @@ $(document).ready(function () {
             }
       }
 
-      $("p.recipeTitle").on("click", function (event) {
+      $(".savedRecipe").on("click", function (event) {
             event.preventDefault()
-            let searchTerm = $(this).attr("data-attribute")
+            let searchTerm = $(this).children().attr("data-attribute")
             searchRecipes(searchTerm)
+            $("#viewIngredientsBtn").prop('disabled', false)
       })
 
-
-      $("#saveButton1, #saveButton2").on("click", function (event) {
-            event.preventDefault()
+      $("#saveButton1, #saveButton2").on("click", function () {
             var recipeNameSave = $("#recipeTitle").text()
-            if (recipeNameSave == "" || recipeNameSave == "null" || recipeNameSave == "Null" || recipeNameSave == null) {
+            if (recipeNameSave == "" || recipeNameSave == "null" || recipeNameSave == "Null" || recipeNameSave == null || recipeNameSave == 0) {
                   alert("nothing to save.  search for a recipe and then click save if you want that recipe.")
+                  return
             } else {
                   savedRecipes.push(recipeNameSave)
                   localStorage.setItem("recipes", JSON.stringify(savedRecipes))
                   renderSearchHistory()
             }
+            $(".enableOnInput").prop('disabled', true)
       })
 
       $(".removeButton").on("click", function (event) {

@@ -26,7 +26,7 @@
                         <div class="input-field">
                               <input id="search" type="search" required>
                               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                              <i class="material-icons">close</i>
+                              <i class="material-icons" id="closeModalBtn">close</i>
                         </div>
                   </form>
             </div>
@@ -42,9 +42,10 @@
             <div class="card-content">
                   <h6 id="recipeTitle"></h6>
                   <div class="center-align" style="margin-top:6rem;">
-                        <button class="waves-effect waves-light btn-small cyan lighten-2" id="saveButton1">Save</button>
-                        <button class="waves-effect waves-light btn-small view"
-                              onclick="$('#modal1').modal('open');">View
+                        <button class="waves-effect waves-light btn-small cyan lighten-2 enableOnInput" id="saveButton1"
+                              disabled=true>Save</button>
+                        <button id="viewIngredientsBtn" class="waves-effect waves-light btn-small view"
+                              onclick="$('#modal1').modal('open');" disabled=true>View
                               Ingredients</button>
                   </div>
 
@@ -65,8 +66,8 @@
       </div>
       <!-- Modal Structure -->
       <div id="modal1" class="modal">
-            <h4 class="card-title grey-text text-darken-4" id="recipeTitlePopup"><i class="material-icons right"
-                        id="modalClose">close</i></h4>
+            <i class="modal-close material-icons right" id="modalClose">close</i>
+            <h4 class="card-title grey-text text-darken-4" id="recipeTitlePopup"></h4>
             <div>
                   <h6><a id="recipeLink"></a></h6>
             </div>
@@ -75,7 +76,8 @@
                   </ul>
             </div>
             <div class="modal-footer center-align">
-                  <button class="waves-effect waves-light btn-small cyan lighten-2" id="saveButton2">Save</button>
+                  <button class="waves-effect waves-light btn-small cyan lighten-2 enableOnInput" id="saveButton2"
+                        disabled=true>Save</button>
             </div>
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.js"
