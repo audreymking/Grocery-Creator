@@ -28,4 +28,27 @@
   margin-left: 1rem;
 }
 
+#toast-container {
+  left: auto;
+  top: 25px;
+  right: 25px;
+  position: absolute;
+}
 
+@media screen and (min-width: 480px) {
+  .video-container {
+    max-width: 90%;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .video-container {
+    max-width: 70%;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .video-container {
+    max-width: 50%;
+  }
+}

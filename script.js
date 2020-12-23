@@ -11,7 +11,8 @@ $(document).ready(function () {
             var app_id = "2cd7b86b"
             let ingredientsList = $("#ingredientsList")
             if (recipeTitle == null || recipeTitle == "" || recipeTitle == "Null" || recipeTitle == "null" || recipeTitle == 0) {
-                  alert("No recipes match the search terms entered.  Edit your search.")
+                  // alert("No recipes match the search terms entered.  Edit your search.")
+                  M.toast({ html: "Invalid Search", classes: "rounded", displayLength: 4000 })
                   return
             } else {
                   var searchURL = "https://api.edamam.com/search?q=" + searchTerm + "&app_id=" + app_id + "&app_key=" + api_key
@@ -20,7 +21,7 @@ $(document).ready(function () {
                         method: "GET"
                   }).then(function (response) {
                         if (response.count == 0) {
-                              alert("No recipes match the search terms entered.  Edit your search.")
+                              M.toast({ html: "Invalid Search", classes: "rounded", displayLength: 4000 })
                               return
                         } else {
 
@@ -90,6 +91,7 @@ $(document).ready(function () {
                   delBtn.attr("class", "btn-floating halfway-fab waves-effect waves-light red removeButton")
                   const trashIcn = $("<i>")
                   trashIcn.attr("class", "far fa-trash-alt")
+                  trashIcn.attr("delete-attribute", uniqueRecipes[i])
                   cardContent.append(recipeTitle)
                   delBtn.append(trashIcn)
                   cardImage.append(delBtn)
@@ -101,17 +103,31 @@ $(document).ready(function () {
             }
       }
 
-      $(".savedRecipe").on("click", function (event) {
-            event.preventDefault()
-            let searchTerm = $(this).children().attr("data-attribute")
-            searchRecipes(searchTerm)
-            $("#viewIngredientsBtn").prop('disabled', false)
+      $("#recipeCards").on("click", function (event) {
+            if (event.target.getAttribute("delete-attribute")) {
+                  var cousinValue = event.target.getAttribute("delete-attribute")
+                  console.log(cousinValue)
+                  $(this).parent().parent().parent().parent().parent("#recipeCard").remove()
+                  var getLocalStorage = JSON.parse(localStorage.getItem("recipes"))
+                  var newArr = getLocalStorage
+                  var filteredArray = newArr.filter((str) => {
+                        return str.indexOf(cousinValue)
+                  })
+                  localStorage.setItem("recipes", JSON.stringify(filteredArray))
+                  renderSearchHistory()
+            } else {
+                  event.preventDefault()
+                  console.log(event.target)
+                  let searchTerm = event.target.getAttribute("data-attribute")
+                  searchRecipes(searchTerm)
+            }
+
       })
 
       $("#saveButton1, #saveButton2").on("click", function () {
             var recipeNameSave = $("#recipeTitle").text()
             if (recipeNameSave == "" || recipeNameSave == "null" || recipeNameSave == "Null" || recipeNameSave == null || recipeNameSave == 0) {
-                  alert("nothing to save.  search for a recipe and then click save if you want that recipe.")
+                  M.toast({ html: "Invalid Search", classes: "rounded", displayLength: 4000 })
                   return
             } else {
                   savedRecipes.push(recipeNameSave)
@@ -119,18 +135,6 @@ $(document).ready(function () {
                   renderSearchHistory()
             }
             $(".enableOnInput").prop('disabled', true)
-      })
-
-      $(".removeButton").on("click", function (event) {
-            event.preventDefault()
-            var cousinValue = $(this).closest("div").siblings().children().text()
-            $(this).parent().parent().parent().parent(".recipeCard").empty()
-            var getLocalStorage = JSON.parse(localStorage.getItem("recipes"))
-            var newArr = getLocalStorage
-            var filteredArray = newArr.filter((str) => {
-                  return str.indexOf(cousinValue)
-            })
-            localStorage.setItem("recipes", JSON.stringify(filteredArray))
       })
 
       $("#clearAllButton").on("click", function (event) {

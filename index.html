@@ -24,7 +24,7 @@
                   <a href="#" class="brand-logo center">Search</a>
                   <form>
                         <div class="input-field">
-                              <input id="search" type="search" required>
+                              <input id="search" type="search" onsearch="M.toast({html: 'I am a toast'})" required>
                               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                               <i class="material-icons" id="closeModalBtn">close</i>
                         </div>
@@ -80,6 +80,9 @@
                         disabled=true>Save</button>
             </div>
       </div>
+
+
+
       <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
       <!-- Compiled and minified JavaScript -->
