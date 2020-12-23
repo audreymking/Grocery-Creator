@@ -14,7 +14,7 @@ $(document).ready(function () {
                   alert("No recipes match the search terms entered.  Edit your search.")
                   return
             } else {
-                  var searchURL = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=" + searchTerm + "&app_id=" + app_id + "&app_key=" + api_key
+                  var searchURL = "https://api.edamam.com/search?q=" + searchTerm + "&app_id=" + app_id + "&app_key=" + api_key
                   $.ajax({
                         url: searchURL,
                         method: "GET"
@@ -23,6 +23,7 @@ $(document).ready(function () {
                               alert("No recipes match the search terms entered.  Edit your search.")
                               return
                         } else {
+
                               recipeTitle.text(response.hits[0].recipe.label)
                               recipeTitlePopup.text(response.hits[0].recipe.label)
                               $("#recipeLink").attr("href", response.hits[0].recipe.url)
@@ -35,7 +36,7 @@ $(document).ready(function () {
                                     ingredientsList.append(newIngredient)
                               }
                               let recipeName = recipeTitlePopup.text()
-                              let youtubeURL = "https://cors-anywhere.herokuapp.com/https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + recipeName + "&key=AIzaSyA_seyeGpnHzEPUZtpmwD1ZIuDGSGPeIDc"
+                              let youtubeURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + recipeName + "&key=AIzaSyA_seyeGpnHzEPUZtpmwD1ZIuDGSGPeIDc"
                               $.ajax({
                                     url: youtubeURL,
                                     method: "GET"
