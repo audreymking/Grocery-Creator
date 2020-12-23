@@ -1,9 +1,31 @@
+a, input, label, h4, h6, ul, p, button{
+  font-family: 'Josefin Slab', serif;
+  font-size: large;
+}
+
+h5 {
+  font-family: 'Josefin Slab;, serif';
+  font-size: x-large;
+}
+
+li {
+font-family: 'Open Sans', sans-serif;
+font-size: medium;
+}
+
 .searchBar {
-      color: #fff;
+    color: #fff;
     background-color: #ee6e73;
     width: 100%;
     height: 80px;
     line-height: 56px;
+}
+
+.searchBar:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(59, 59, 59, 0.6);
+  transform: scale(1.02);
+  transition: transform 100ms;
 }
 
 #ingredientsListContainer {
@@ -33,22 +55,53 @@
   top: 25px;
   right: 25px;
   position: absolute;
+  max-width: 50% !important;
+}
+.videoAspectRatio{
+  margin: 2rem auto !important; 
+  align-content: center !important;
+
+}
+.searchResult, .recipeCard {
+  margin: 0 auto;
 }
 
-@media screen and (min-width: 480px) {
-  .video-container {
-    max-width: 90%;
+@media screen and (min-width: 300px) {
+  .videoAspectRatio {
+    width: 90%;
+    height: 50.625%;
+  }
+  .brand-logo{
+    font-size:  large !important;
+  }
+  .searchResult, .recipeCard {
+    width: 90%;
   }
 }
 
 @media screen and (min-width: 760px) {
-  .video-container {
-    max-width: 70%;
+  
+  .videoAspectRatio {
+    width: 80%;
+    height: 45%;
+  }
+    .brand-logo{
+    font-size:  x-large !important;
+  }
+    .searchResult, .recipeCard {
+    width: 80%;
   }
 }
 
 @media screen and (min-width: 980px) {
-  .video-container {
-    max-width: 50%;
+  .videoAspectRatio {
+    width: 70%;
+    height: 39.375%;
+  }
+    .brand-logo{
+    font-size:  x-large !important;
+  }
+      .searchResult, .recipeCard {
+    width: 70%;
   }
 }

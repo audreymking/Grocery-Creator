@@ -120,6 +120,7 @@ $(document).ready(function () {
                   console.log(event.target)
                   let searchTerm = event.target.getAttribute("data-attribute")
                   searchRecipes(searchTerm)
+                  $("#viewIngredientsBtn").prop('disabled', false)
             }
 
       })

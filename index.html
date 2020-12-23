@@ -9,6 +9,8 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="style.css">
       <title>Cooking With Sass</title>
 </head>
@@ -16,7 +18,7 @@
 <body>
       <nav>
             <div class="nav-wrapper green accent-3 valign-wraper">
-                  <h6 class="brand-logo center">Cooking With Sass</h6>
+                  <a class="brand-logo center">Cooking With Sass</a>
             </div>
       </nav>
       <nav class="searchBar">
@@ -31,14 +33,14 @@
                   </form>
             </div>
       </nav>
-      <div class="row">
-            <div class="video-container" style="margin-top: 1.5rem;">
-                  <iframe width="560" height="315" src="" frameborder="0"
+      <div class="row videoAspectRatio">
+            <div class=" video-container" style="margin-top: 1.5rem;">
+                  <iframe src="" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen id="youtubeVideo"></iframe>
             </div>
       </div>
-      <div class="card">
+      <div class="card searchResult">
             <div class="card-content">
                   <h6 id="recipeTitle"></h6>
                   <div class="center-align" style="margin-top:6rem;">
