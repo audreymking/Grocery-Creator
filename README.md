@@ -14,7 +14,7 @@ The Youtube video is embedded into the webpage and the search results are access
 
 Before starting our project, we created a flow chart and a rough sketch of our webpage design. 
 *Workflow Chart: ![workflow chart](images/Recipe_Flowchart.svg)
-*Rough sketch of homepage: ![rough sketch of homepage](images/IMG_0498.PNG)
+*Rough sketch of homepage: ![rough sketch of homepage](images/IMG_0498.PNG =300x)
 
 Using these tools, we were able to create a user friendly page to showcase the results of the API's used.
 
