@@ -13,8 +13,8 @@ The Youtube video is embedded into the webpage and the search results are access
 # Project Process
 
 Before starting our project, we created a flow chart and a rough sketch of our webpage design. 
-*Workflow Chart: ![workflow chart](./RecipeFlowchart.svg)
-*Rough sketch of homepage: ![rough sketch of homepage](./IMG_0497.PNG)
+*Workflow Chart: ![workflow chart](images/Recipe_Flowchart.svg)
+*Rough sketch of homepage: ![rough sketch of homepage](images/IMG_0497.PNG)
 
 Using these tools, we were able to create a user friendly page to showcase the results of the API's used.
 
@@ -22,7 +22,7 @@ Using these tools, we were able to create a user friendly page to showcase the r
 
 Below is a representation of what the application looks like when deployed:
 
-""
+<img src="images/Cooking with sass.png" style="width=300px">
 
 Click the link to access the full applicaiton: 
 

@@ -1,8 +1,12 @@
 $(document).ready(function () {
+      //on page load we want to bring the search history from local storage to show the saved searches
       renderSearchHistory()
+      //on page load we will either set saved recipes to the items in local storage, or an empty array if it is empty
       var savedRecipes = JSON.parse(localStorage.getItem("recipes")) || []
+      //modal for when you click on view ingredients 
       $('#modal1').modal();
 
+      //function to call edamam and youtube api based on search terms. 
       function searchRecipes(searchTerm) {
             let recipeTitle = $("#recipeTitle")
             let recipeTitlePopup = $("#recipeTitlePopup")
@@ -10,8 +14,9 @@ $(document).ready(function () {
             var api_key = "1df2ae13cdae45953fcb01d364673c56"
             var app_id = "2cd7b86b"
             let ingredientsList = $("#ingredientsList")
+            //prevents unsearchable terms.
             if (recipeTitle == null || recipeTitle == "" || recipeTitle == "Null" || recipeTitle == "null" || recipeTitle == 0) {
-                  // alert("No recipes match the search terms entered.  Edit your search.")
+                  //provides a small message at the top for 4 seconds the search was invalid
                   M.toast({ html: "Invalid Search", classes: "rounded", displayLength: 4000 })
                   return
             } else {
@@ -21,10 +26,11 @@ $(document).ready(function () {
                         method: "GET"
                   }).then(function (response) {
                         if (response.count == 0) {
+                              //message if no results are found from edamam api call response
                               M.toast({ html: "Invalid Search", classes: "rounded", displayLength: 4000 })
                               return
                         } else {
-
+                              //making recipe cards at the bottom of the page so you can click on them later and see the recipes
                               recipeTitle.text(response.hits[0].recipe.label)
                               recipeTitlePopup.text(response.hits[0].recipe.label)
                               $("#recipeLink").attr("href", response.hits[0].recipe.url)
@@ -36,6 +42,7 @@ $(document).ready(function () {
                                     newIngredient.text(response.hits[0].recipe.ingredients[i].text)
                                     ingredientsList.append(newIngredient)
                               }
+                              //uses recipe search results in call to youtube api call. 
                               let recipeName = recipeTitlePopup.text()
                               let youtubeURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + recipeName + "&key=AIzaSyA_seyeGpnHzEPUZtpmwD1ZIuDGSGPeIDc"
                               $.ajax({
@@ -50,7 +57,7 @@ $(document).ready(function () {
 
             }
       }
-
+      //when enter is pressed, search function is called
       $("#search").on("keydown", function (event) {
 
             let searchTerm = $("#search").val()
@@ -63,12 +70,15 @@ $(document).ready(function () {
             }
       })
 
+      //function to rendersearch history from local storage. 
       function renderSearchHistory() {
             const recipeEl = $("#recipeCards").html("")
             var retrievedRecipes = localStorage.getItem("recipes")
             var checkDupRecipes = JSON.parse(retrievedRecipes)
+            //filters out duplicates from checkDupRecipes so there are no duplicate recipe cards
             let uniqueRecipes = [...new Set(checkDupRecipes)]
             var dataValue = 0
+            //manipulae DOM to make recipe cards
             for (let i = 0; i < uniqueRecipes.length; i++) {
                   dataValue++
                   const recipeCard = $("<div>")
@@ -103,6 +113,7 @@ $(document).ready(function () {
             }
       }
 
+      //event listener on each recipe card to call search function. 
       $("#recipeCards").on("click", function (event) {
             if (event.target.getAttribute("delete-attribute")) {
                   var cousinValue = event.target.getAttribute("delete-attribute")
@@ -124,7 +135,7 @@ $(document).ready(function () {
             }
 
       })
-
+      //event listener on each save button to save recipe name ot local storage.  
       $("#saveButton1, #saveButton2").on("click", function () {
             var recipeNameSave = $("#recipeTitle").text()
             if (recipeNameSave == "" || recipeNameSave == "null" || recipeNameSave == "Null" || recipeNameSave == null || recipeNameSave == 0) {
@@ -137,7 +148,7 @@ $(document).ready(function () {
             }
             $(".enableOnInput").prop('disabled', true)
       })
-
+      //clear button event listener to empty local storage, and remove all recipe cards. 
       $("#clearAllButton").on("click", function (event) {
             event.preventDefault()
             var getLocalStorage = JSON.parse(localStorage.getItem("recipes"))
