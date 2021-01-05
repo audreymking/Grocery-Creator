@@ -22,7 +22,7 @@ Using these tools, we were able to create a user friendly page to showcase the r
 
 Below is a representation of what the application looks like when deployed:
 
-<img src="images/Cooking with sass.png" style="max-width=100px">
+<img src="images/Cooking with sass.png" style="max-width:300px">
 
 Click the link to access the full applicaiton: 
 
